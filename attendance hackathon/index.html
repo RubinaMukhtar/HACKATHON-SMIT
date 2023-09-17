@@ -1,0 +1,116 @@
+ <!DOCTYPE html>
+<html>
+<head>
+    <title>Attendance Application</title>
+    <style>
+        /* CSS Styling */
+        body {
+            font-family: Arial, sans-serif;
+        }
+        form {
+            width: 300px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<link href="#style.css"/>
+<body>
+    <div id="signup-form">
+        <h2>Sign Up</h2>
+        <input type="text" id="username" placeholder="Username">
+        <input type="password" id="password" placeholder="Password">
+        <button onclick="signup()">Sign Up</button>
+    </div>
+
+    <div id="loggedin" style="display: none;">
+        <h2>Welcome, <span id="user"></span>!</h2>
+        <button onclick="logout()">Log Out</button>
+    </div>
+
+    <script src="script.js"></script>
+    <h1>Attendance Application</h1>
+    <form id="attendanceForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" required><br><br>
+
+        <label for="rollNumber">Roll Number:</label>
+        <input type="text" id="rollNumber" required><br><br>
+
+        <label for="date">Date:</label>
+        <input type="date" id="date" required><br><br>
+
+        <label for="status">Status:</label>
+        <select id="status">
+            <option value="present">Present</option>
+            <option value="absent">Absent</option>
+        </select><br><br>
+
+        <input type="button" value="Submit" onclick="recordAttendance()">
+    </form>
+
+    <div>
+        <h2>Attendance Record</h2>
+        <ul id="attendanceList"></ul>
+    </div>
+
+    <script>
+        // JavaScript Functions
+        function recordAttendance() {
+            var name = document.getElementById("name").value;
+            var rollNumber = document.getElementById("rollNumber").value;
+            var date = document.getElementById("date").value;
+            var status = document.getElementById("status").value;
+
+            // Validate and record the data (You can save it to local storage or send to a server)
+            var isValid = validateData(name, rollNumber, date, status);
+
+            if (isValid) {
+                // Display the recorded data
+                var attendanceList = document.getElementById("attendanceList");
+                var listItem = document.createElement("li");
+                listItem.textContent = name + " - Roll Number: " + rollNumber + ", Date: " + date + ", Status: " + status;
+                attendanceList.appendChild(listItem);
+
+                // Clear the form
+                document.getElementById("attendanceForm").reset();
+            }
+        }
+
+        function validateData(name, rollNumber, date, status) {
+            // Implement your data validation logic here
+            // For example, you can check if fields are not empty
+            if (name === "" || rollNumber === "" || date === "") {
+                alert("Please fill in all fields.");
+                return false;
+            }
+            return true;
+        }
+    </script>
+    login as a student
+    <link rel="stylesheet"href="#style.css">
+    <h1 style="background-color: black; color: white; font-size: 48px; font-family: sans-serif; font-weight: bold; text-align: center;">Attendance Application</h1>
+    <h2 style="background-color: wheat; color: black; font-size: 38px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: bold; text-align: center;">Login as a student</h2>
+    
+     <div id="signin-form">
+        <h2>Sign in</h2>
+        <input type="text" id="username" placeholder="Username">
+        <input type="password" id="password" placeholder="Password">
+        <button onclick="signup()">Sign in</button>
+    </div>
+    <h1>Attendance App</h1>
+
+    <div id="attendance">
+        <button id="markAttendance" onclick="markAttendance()">Mark Attendance</button>
+        <ul id="attendanceList"></ul>
+    </div>
+
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="dashboard.html">
+   
+
+    
+</body>
+</html>
+
+
+    
